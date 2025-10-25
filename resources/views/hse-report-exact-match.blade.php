@@ -13,11 +13,10 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: white;
+            background: #e8e8e8;
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background: #1e3a8a;
             color: white;
@@ -44,68 +43,90 @@
             font-weight: 500;
         }
 
-        /* Main Container */
         .main-container {
             margin-top: 70px;
             display: flex;
             min-height: calc(100vh - 70px);
         }
 
-        /* Left Sidebar - Project HSE Statistics Report */
+        /* Left Sidebar */
         .left-sidebar {
-            width: 200px;
+            width: 220px;
             background: #1e3a8a;
             color: white;
             padding: 0;
             position: relative;
+            display: flex;
+        }
+
+        .left-sidebar-data {
+            width: 180px;
+            background: #1e3a8a;
+            padding: 0;
+        }
+
+        .sidebar-item {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-label {
+            background: #d0d0d0;
+            color: #333;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border-left: 3px solid #999;
+        }
+
+        .sidebar-label.blue {
+            background: #0066cc;
+            color: white;
+            font-weight: 600;
+            border-left-color: #004499;
+        }
+
+        .sidebar-value {
+            background: #ffffff;
+            color: #333;
+            padding: 0.4rem 0.6rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border-left: 3px solid #999;
+            border: 1px solid #d0d0d0;
+        }
+
+        .sidebar-value.dark {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-left: 3px solid #1a252f;
         }
 
         .left-sidebar-header {
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            height: 100%;
+            width: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #1e3a8a;
+            background: #34495e;
             font-weight: 600;
             font-size: 0.9rem;
             padding: 1rem 0.5rem;
-            border-right: 3px solid #0f172a;
+            border-right: 3px solid #1a252f;
         }
 
-        /* Main Content Area */
+        /* Main Content */
         .main-content {
             flex: 1;
             padding: 2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
             gap: 2rem;
-            background: white;
         }
 
-        /* Right Sidebar */
-        .right-sidebar {
-            width: 200px;
-            background: #1e293b;
-            color: white;
-            padding: 1rem;
-            position: relative;
-        }
-
-        .right-sidebar-header {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #0f172a;
-            font-weight: 600;
-            font-size: 0.9rem;
-            padding: 1rem 0.5rem;
-            border-left: 3px solid #0c1426;
-        }
 
         /* Section Styles */
         .section {
@@ -142,50 +163,6 @@
             border-radius: 0 4px 4px 0;
         }
 
-        /* Light Blue Headers */
-        .light-blue-header {
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 0.5rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* Yellow Header */
-        .yellow-header {
-            background: #fef3c7;
-            color: #92400e;
-            padding: 0.5rem;
-            font-weight: 600;
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
-            border-radius: 4px;
-        }
-
-        /* Tables */
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
-            font-size: 0.75rem;
-        }
-
-        .table th,
-        .table td {
-            border: 1px solid #d1d5db;
-            padding: 0.25rem 0.5rem;
-            text-align: left;
-            font-size: 0.7rem;
-        }
-
-        .table th {
-            background-color: #f8fafc;
-            font-weight: 600;
-            font-size: 0.65rem;
-        }
-
         /* Data Boxes */
         .data-box {
             background: #f8fafc;
@@ -211,6 +188,28 @@
         .data-box.large {
             min-height: 100px;
             padding: 2rem;
+        }
+
+        /* Tables */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #d1d5db;
+            padding: 0.25rem 0.5rem;
+            text-align: left;
+            font-size: 0.7rem;
+        }
+
+        .table th {
+            background-color: #f8fafc;
+            font-weight: 600;
+            font-size: 0.65rem;
         }
 
         /* Observation Grid */
@@ -239,19 +238,14 @@
             border: 1px solid #d1d5db;
         }
 
-        .observation-item.light-blue {
-            background-color: #dbeafe;
-            border: 1px solid #3b82f6;
-        }
-
         .observation-item.green {
             background-color: #dcfce7;
             border: 1px solid #16a34a;
         }
 
-        .observation-item.orange {
-            background-color: #fed7aa;
-            border: 1px solid #ea580c;
+        .observation-item.red {
+            background-color: #fee2e2;
+            border: 1px solid #dc2626;
         }
 
         .observation-label {
@@ -332,12 +326,8 @@
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
-        /* Sidebar Content */
-        .sidebar-content {
-            padding: 1rem;
-        }
-
-        .sidebar-item {
+        /* Right Sidebar Content */
+        .right-sidebar-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -358,54 +348,9 @@
             flex-shrink: 0;
         }
 
-        /* Left Sidebar Metrics */
-        .metric-item {
-            padding: 0.4rem 0.6rem;
-            margin-bottom: 1px;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            min-height: 28px;
-            border-left: 3px solid transparent;
-        }
-
-        .metric-item.header-light {
-            background-color: #d0d0d0;
-            color: #333;
-            font-weight: 500;
-            font-size: 0.75rem;
-            border-left-color: #999;
-        }
-
-        .metric-item.header-blue {
-            background-color: #1e3a8a;
-            color: white;
-            font-weight: 600;
-            font-size: 0.75rem;
-            border-left-color: #0f172a;
-        }
-
-        .metric-item.data-light {
-            background-color: #ffffff;
-            color: #333;
-            font-weight: 500;
-            font-size: 0.75rem;
-            border-left-color: #999;
-            border: 1px solid #d0d0d0;
-        }
-
-        .metric-item.data-dark {
-            background-color: #1e3a8a;
-            color: white;
-            font-weight: 500;
-            font-size: 0.75rem;
-            border-left-color: #0f172a;
-        }
-
         /* Responsive */
         @media (max-width: 1200px) {
-            .left-sidebar,
-            .right-sidebar {
+            .left-sidebar {
                 display: none;
             }
             .main-content {
@@ -424,120 +369,146 @@
     <div class="main-container">
         <!-- Left Sidebar -->
         <div class="left-sidebar">
-            <div class="left-sidebar-header">Project HSE Statistics Report</div>
-            <div class="sidebar-content">
-                <div class="metric-item header-light">
-                    <span>Month</span>
+            <div class="left-sidebar-data">
+                <div class="sidebar-item">
+                    <div class="sidebar-label">Month</div>
+                    <div class="sidebar-value">{{ $hseData['month'] ?? 'Oct-25' }}</div>
                 </div>
-                <div class="metric-item data-light">
-                    <span>{{ $hseData['month'] ?? 'Oct-25' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-label blue">Project Start Date</div>
+                    <div class="sidebar-value">{{ $hseData['project_start_date'] ?? '2024-01-15' }}</div>
                 </div>
-                <div class="metric-item header-blue">
-                    <span>Project Start Date</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-label blue">Days Completed</div>
+                    <div class="sidebar-value dark">{{ $hseData['days_completed'] ?? '285' }}</div>
                 </div>
-                <div class="metric-item data-light">
-                    <span>{{ $hseData['project_start_date'] ?? '2024-01-15' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-label blue">ITD</div>
                 </div>
-                <div class="metric-item header-blue">
-                    <span>Days Completed</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Total Manhours</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['days_completed'] ?? '285' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ number_format($hseData['total_manhours'] ?? 125000) }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>ITD</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Total Manhours with LTI</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Total Manhours</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ number_format($hseData['total_manhours_with_lti'] ?? 125000) }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ number_format($hseData['total_manhours'] ?? 125000) }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Persons Inducted</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Total Manhours with LTI</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['persons_inducted'] ?? '450' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ number_format($hseData['total_manhours_with_lti'] ?? 125000) }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Training Conducted</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Persons Inducted</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['training_conducted'] ?? '25' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['persons_inducted'] ?? '450' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Training Hrs</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Training Conducted</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['training_hours'] ?? '180' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['training_conducted'] ?? '25' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># HSE Observations</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Training Hrs</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['hse_observations'] ?? '1250' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['training_hours'] ?? '180' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># HSE Meeting</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># HSE Observations</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['hse_meeting'] ?? '12' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['hse_observations'] ?? '1250' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Permit to Work</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># HSE Meeting</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['permit_to_work'] ?? '85' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['hse_meeting'] ?? '12' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Knowledge Share</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Permit to Work</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['knowledge_share'] ?? '8' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['permit_to_work'] ?? '85' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Leadership Tour</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Knowledge Share</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['leadership_tour'] ?? '6' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['knowledge_share'] ?? '8' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Audit</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Leadership Tour</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['audit'] ?? '3' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['leadership_tour'] ?? '6' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># Accident/Incident</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Audit</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['accident_incident'] ?? '0' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['audit'] ?? '3' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># TRCF</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># Accident/Incident</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['trcf'] ?? '0.0' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['accident_incident'] ?? '0' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark"># LTIFR</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># TRCF</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">{{ $hseData['ltifr'] ?? '0.0' }}</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['trcf'] ?? '0.0' }}</span>
+                
+                <div class="sidebar-item">
+                    <div class="sidebar-value dark">Scope of Works</div>
                 </div>
-                <div class="metric-item data-dark">
-                    <span># LTIFR</span>
-                </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['ltifr'] ?? '0.0' }}</span>
-                </div>
-                <div class="metric-item data-dark">
-                    <span>Scope of Works</span>
-                </div>
-                <div class="metric-item data-dark">
-                    <span>{{ $hseData['scope_of_works'] ?? 'Construction Project' }}</span>
-                </div>
+                
+                
             </div>
+            
+            <div class="left-sidebar-header">Project HSE Statistics Report</div>
         </div>
 
         <!-- Main Content -->
@@ -549,7 +520,7 @@
                     <div class="section-content">
                         <!-- HSE Leading Indicators -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">HSE Leading Indicators</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Leading Indicators</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -572,9 +543,9 @@
                             </table>
                         </div>
 
-                        <!-- Description -->
+                        <!-- Description Section 1 -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">Description</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Description</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -586,19 +557,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td># Critical Risk Workshop</td>
+                                        <td>#Critical Risk Workshop</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td># Awards & Reward</td>
+                                        <td>#Awards & Reward</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td># Monthly Inspections (Reported)</td>
+                                        <td>#Monthly Inspections (Reported)</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -607,9 +578,9 @@
                             </table>
                         </div>
 
-                        <!-- Training Data -->
+                        <!-- Description - Training (No.) -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">Description - Training (No.)</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Description - Training (No.)</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -620,21 +591,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($hseData['training_data'] ?? [] as $training)
                                     <tr>
-                                        <td>{{ $training['description'] }}</td>
-                                        <td>{{ $training['oct25'] }}</td>
-                                        <td>{{ $training['ytd'] }}</td>
-                                        <td>{{ $training['itd'] }}</td>
+                                        <td>#HSE Induction (No.)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>#HSE Induction Attendence</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#HSE Training - TBT</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#Daily Pre-Task Briefing</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#Activity Based Training</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#External training - 3rd Party</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <!-- HSE Lagging Indicators -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="yellow-header">HSE Lagging Indicators</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Lagging Indicators</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -656,12 +655,68 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2 -->
+            <div>
+                <div class="section">
+                    <div class="section-header">HSE Statistics</div>
+                    <div class="section-content">
+                        <!-- Manhours without LTI -->
+                        <div class="data-box large">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Manhours without LTI</div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">{{ number_format($hseData['total_manhours_with_lti'] ?? 125000) }}</div>
+                            </div>
+                        </div>
+
+                        <!-- HSE Training Statistics -->
+                        <div class="data-box large">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Statistics (No. of Sessions)</div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">{{ $hseData['training_conducted'] ?? '25' }}</div>
+                            </div>
+                        </div>
+
+                        <!-- HSE Training Hours -->
+                        <div class="data-box small">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Hours</div>
+                                <div style="font-size: 1.25rem; font-weight: 700; color: #10b981;">{{ $hseData['training_hours'] ?? '180' }}</div>
+                            </div>
+                        </div>
+
+                        <!-- Near Miss Report -->
+                        <div class="data-box small">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Near Miss Report</div>
+                                <div style="font-size: 1.25rem; font-weight: 700; color: #f59e0b;">0</div>
+                            </div>
+                        </div>
+
+                        <!-- TRCF -->
+                        <div class="data-box small">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Total Reportable Case Frequency (TRCF)</div>
+                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['trcf'] ?? '0.0' }}</div>
+                            </div>
+                        </div>
+
+                        <!-- Accident/Incident Statistics -->
+                        <div class="data-box small">
+                            <div style="text-align: center;">
+                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Accident/Incident (A/I) Statistics</div>
+                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['accident_incident'] ?? '0' }}</div>
+                            </div>
+                        </div>
 
                         <!-- HSE Observation -->
                         <div style="margin-bottom: 1rem;">
-                            <div style="writing-mode: vertical-rl; text-orientation: mixed; height: 100px; display: flex; align-items: center; justify-content: center; background: #1e3a8a; color: white; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; font-weight: 600; float: left; margin-right: 1rem;">HSE Observation</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Observation</h3>
                             <div class="observation-grid">
-                                <div class="observation-item light-blue">
+                                <div class="observation-item white">
                                     <div class="observation-label">Cumulative</div>
                                     <div class="observation-value">{{ $hseData['hse_observations'] ?? '1250' }}</div>
                                 </div>
@@ -669,7 +724,7 @@
                                     <div class="observation-label">Positive</div>
                                     <div class="observation-value">850</div>
                                 </div>
-                                <div class="observation-item orange">
+                                <div class="observation-item red">
                                     <div class="observation-label">Negative</div>
                                     <div class="observation-value">400</div>
                                 </div>
@@ -694,65 +749,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Column 2 -->
-            <div>
-                <div class="section">
-                    <div class="section-header">HSE Statistics</div>
-                    <div class="section-content">
-                        <!-- HSE Training Statistics -->
-                        <div class="light-blue-header">HSE Training Statistics (No. of Sessions)</div>
-                        <div class="data-box large">
-                            <div style="text-align: center;">
-                                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Statistics (No. of Sessions)</div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">{{ $hseData['training_conducted'] ?? '25' }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Manhours without LTI -->
-                        <div style="writing-mode: vertical-rl; text-orientation: mixed; height: 100px; display: flex; align-items: center; justify-content: center; background: #1e3a8a; color: white; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; font-weight: 600; float: right; margin-left: 1rem;">Manhours without LTI</div>
-
-                        <!-- HSE Training Hours -->
-                        <div class="light-blue-header">HSE Training Hours</div>
-                        <div class="data-box small">
-                            <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Hours</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #10b981;">{{ $hseData['training_hours'] ?? '180' }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Near Miss Report -->
-                        <div class="light-blue-header">Near Miss Report</div>
-                        <div class="data-box small">
-                            <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Near Miss Report</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #f59e0b;">0</div>
-                            </div>
-                        </div>
-
-                        <!-- TRCF -->
-                        <div class="light-blue-header">Total Reportable Case Frequency (TRCF)</div>
-                        <div class="data-box small">
-                            <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Total Reportable Case Frequency (TRCF)</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['trcf'] ?? '0.0' }}</div>
-                            </div>
-                        </div>
-
-                        <!-- Accident/Incident Statistics -->
-                        <div class="light-blue-header">Accident/Incident (A/I) Statistics</div>
-                        <div class="data-box small">
-                            <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Accident/Incident (A/I) Statistics</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['accident_incident'] ?? '0' }}</div>
-                            </div>
-                        </div>
 
                         <!-- LTIFR -->
-                        <div class="light-blue-header">Lost Time Incident Frequency Rate (LTIFR)</div>
                         <div class="data-box small">
                             <div style="text-align: center;">
                                 <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Lost Time Incident Frequency Rate (LTIFR)</div>
@@ -761,7 +759,6 @@
                         </div>
 
                         <!-- HSE Audit -->
-                        <div class="light-blue-header">HSE Audit</div>
                         <div class="data-box small">
                             <div style="text-align: center;">
                                 <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Audit</div>
@@ -770,7 +767,6 @@
                         </div>
 
                         <!-- Reward Recognition -->
-                        <div class="light-blue-header">Reward Recognition (No. of Worker)</div>
                         <div class="data-box small">
                             <div style="text-align: center;">
                                 <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Reward Recognition (No. of Worker)</div>
@@ -779,7 +775,6 @@
                         </div>
 
                         <!-- HSE Inspection -->
-                        <div class="light-blue-header">HSE Inspection</div>
                         <div class="data-box small">
                             <div style="text-align: center;">
                                 <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Inspection</div>
@@ -797,7 +792,7 @@
                     <div class="section-content">
                         <!-- HSE Deliverables Status -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">HSE Deliverables Status</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Deliverables Status</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -820,7 +815,7 @@
 
                         <!-- Permit To Work Statistics -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">Permit To Work Statistics</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Permit To Work Statistics</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -845,7 +840,7 @@
 
                         <!-- HSE Achievement -->
                         <div style="margin-bottom: 1.5rem;">
-                            <div class="light-blue-header">HSE Achievement</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Achievement</h3>
                             <div class="achievement-grid">
                                 @foreach($hseAchievement ?? [] as $achievement)
                                 <div class="achievement-item">
@@ -864,7 +859,7 @@
 
                         <!-- Additional HSE Data -->
                         <div style="margin-bottom: 1rem;">
-                            <div class="light-blue-header">HSE</div>
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -889,35 +884,47 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Right Sidebar -->
-        <div class="right-sidebar">
-            <div class="right-sidebar-header">Meeting & Workshop</div>
-            <div class="sidebar-content">
-                <div style="margin-bottom: 2rem;">
-                    <div class="sidebar-item">
-                        <span class="sidebar-button"></span>
-                        <span>Knowledge Share</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-button"></span>
-                        <span>Leadership Tour</span>
+            <!-- Column 4 - Meeting & Workshop and Photographs -->
+            <div>
+                <!-- Meeting & Workshop Section -->
+                <div class="section" style="margin-bottom: 2rem;">
+                    <div class="section-header">Meeting & Workshop</div>
+                    <div class="section-content">
+                        <div style="margin-bottom: 1rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Meeting & Workshop</h3>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="width: 8px; height: 8px; background: #60a5fa; border-radius: 2px; flex-shrink: 0;"></span>
+                                    <span style="font-size: 0.75rem;">Knowledge Share</span>
+                                </div>
+                                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="width: 8px; height: 8px; background: #60a5fa; border-radius: 2px; flex-shrink: 0;"></span>
+                                    <span style="font-size: 0.75rem;">Leadership Tour</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <div style="writing-mode: vertical-rl; text-orientation: mixed; height: 100px; display: flex; align-items: center; justify-content: center; background: #1e293b; padding: 0.5rem; border-radius: 4px; margin-bottom: 1rem; font-weight: 600;">Photographs</div>
-                    <div class="photo-grid">
-                        <div class="photo-box">Photo 1</div>
-                        <div class="photo-box">Photo 2</div>
-                        <div class="photo-box">Photo 3</div>
-                        <div class="photo-box">Photo 4</div>
-                        <div class="photo-box">Photo 5</div>
-                        <div class="photo-box">Photo 6</div>
-                        <div class="photo-box">Photo 7</div>
-                        <div class="photo-box">Photo 8</div>
-                        <div class="photo-box">Photo 9</div>
+                <!-- Photographs Section -->
+                <div class="section">
+                    <div class="section-header">Photographs</div>
+                    <div class="section-content">
+                        <div style="margin-bottom: 1rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Photographs</h3>
+                            <div class="photo-grid">
+                                <div class="photo-box">Photo 1</div>
+                                <div class="photo-box">Photo 2</div>
+                                <div class="photo-box">Photo 3</div>
+                                <div class="photo-box">Photo 4</div>
+                                <div class="photo-box">Photo 5</div>
+                                <div class="photo-box">Photo 6</div>
+                                <div class="photo-box">Photo 7</div>
+                                <div class="photo-box">Photo 8</div>
+                                <div class="photo-box">Photo 9</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
