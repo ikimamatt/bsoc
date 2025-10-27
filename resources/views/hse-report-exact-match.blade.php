@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Page HSE Monthly Executive Report</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,96 +14,115 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #e8e8e8;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             min-height: 100vh;
+            color: #1e293b;
         }
 
         .header {
-            background: #1e3a8a;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.25rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 75px;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
             font-weight: 600;
+            box-shadow: 0 4px 20px rgba(30, 64, 175, 0.25);
         }
 
         .header h1 {
-            font-size: 1.5rem;
+            font-size: 1.625rem;
             margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .header .month {
-            font-size: 1.2rem;
-            font-weight: 500;
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.25rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .main-container {
-            margin-top: 70px;
+            margin-top: 75px;
             display: flex;
-            min-height: calc(100vh - 70px);
+            min-height: calc(100vh - 75px);
         }
 
         /* Left Sidebar */
         .left-sidebar {
             width: 220px;
-            background: #1e3a8a;
+            background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
             color: white;
             padding: 0;
             position: relative;
             display: flex;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .left-sidebar-data {
             width: 180px;
-            background: #1e3a8a;
+            background: transparent;
             padding: 0;
         }
 
         .sidebar-item {
             display: flex;
             flex-direction: column;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .sidebar-label {
-            background: #d0d0d0;
-            color: #333;
-            padding: 0.4rem 0.6rem;
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            color: #1f2937;
+            padding: 0.5rem 0.75rem;
             font-size: 0.7rem;
-            font-weight: 500;
-            border-left: 3px solid #999;
+            font-weight: 600;
+            border-left: 3px solid #9ca3af;
+            letter-spacing: 0.015em;
         }
 
         .sidebar-label.blue {
-            background: #0066cc;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            font-weight: 600;
-            border-left-color: #004499;
+            font-weight: 700;
+            border-left-color: #1e40af;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar-value {
             background: #ffffff;
-            color: #333;
-            padding: 0.4rem 0.6rem;
+            color: #1f2937;
+            padding: 0.5rem 0.75rem;
             font-size: 0.7rem;
-            font-weight: 500;
-            border-left: 3px solid #999;
-            border: 1px solid #d0d0d0;
+            font-weight: 600;
+            border-left: 3px solid #9ca3af;
+            border: 1px solid #e5e7eb;
         }
 
         .sidebar-value.dark {
-            background: #2c3e50;
+            background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
             color: white;
             border: none;
-            border-left: 3px solid #1a252f;
+            border-left: 3px solid #0f172a;
+            font-weight: 600;
         }
 
         .left-sidebar-header {
@@ -111,17 +132,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #34495e;
-            font-weight: 600;
-            font-size: 0.9rem;
+            background: linear-gradient(180deg, #475569 0%, #334155 100%);
+            font-weight: 700;
+            font-size: 0.875rem;
             padding: 1rem 0.5rem;
-            border-right: 3px solid #1a252f;
+            border-right: 3px solid #1e293b;
+            letter-spacing: 0.025em;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Main Content */
         .main-content {
             flex: 1;
-            padding: 2rem;
+            padding: 2.5rem;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
             gap: 2rem;
@@ -131,17 +154,24 @@
         /* Section Styles */
         .section {
             background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
         }
 
         .section-header {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
             padding: 0.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            font-weight: 600;
+            border-bottom: 1px solid #2563eb;
+            font-weight: 700;
             font-size: 0.8rem;
             writing-mode: vertical-rl;
             text-orientation: mixed;
@@ -149,35 +179,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 25px;
+            width: 28px;
             float: left;
             margin-right: 0.5rem;
-            border-right: 2px solid #e2e8f0;
-            border-radius: 4px 0 0 4px;
+            border-right: 2px solid #2563eb;
+            border-radius: 12px 0 0 12px;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .section-content {
-            padding: 1rem;
-            margin-left: 35px;
+            padding: 1.25rem;
+            margin-left: 38px;
             background: white;
-            border-radius: 0 4px 4px 0;
+            border-radius: 0 12px 12px 0;
         }
 
         /* Data Boxes */
         .data-box {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             border: 1px solid #e2e8f0;
             padding: 1.5rem;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.875rem;
             min-height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #6b7280;
+            color: #475569;
             font-size: 0.8rem;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .data-box:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
         }
 
         .data-box.small {
@@ -193,159 +231,256 @@
         /* Tables */
         .table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             margin-bottom: 1rem;
             font-size: 0.75rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
         }
 
         .table th,
         .table td {
-            border: 1px solid #d1d5db;
-            padding: 0.25rem 0.5rem;
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 0.625rem;
             text-align: left;
             font-size: 0.7rem;
         }
 
         .table th {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            font-weight: 700;
+            font-size: 0.675rem;
+            color: #1e293b;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .table tbody tr:hover {
             background-color: #f8fafc;
-            font-weight: 600;
-            font-size: 0.65rem;
         }
 
         /* Observation Grid */
         .observation-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 0.875rem;
+            margin-bottom: 0.875rem;
         }
 
         .observation-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 0.75rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+            padding: 0.875rem;
             text-align: center;
-            min-height: 60px;
+            min-height: 65px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-radius: 4px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .observation-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .observation-item.white {
-            background-color: #ffffff;
-            border: 1px solid #d1d5db;
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+            border: 2px solid #d1d5db;
         }
 
         .observation-item.green {
-            background-color: #dcfce7;
-            border: 1px solid #16a34a;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border: 2px solid #10b981;
         }
 
         .observation-item.red {
-            background-color: #fee2e2;
-            border: 1px solid #dc2626;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #ef4444;
         }
 
         .observation-label {
-            font-size: 0.6rem;
-            color: #6b7280;
-            margin-bottom: 0.25rem;
-            font-weight: 500;
+            font-size: 0.625rem;
+            color: #64748b;
+            margin-bottom: 0.375rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .observation-value {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #1f2937;
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: #0f172a;
         }
 
         .observation-grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 0.625rem;
+            margin-top: 0.625rem;
         }
 
         /* Achievement Grid */
         .achievement-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 0.875rem;
+            margin-bottom: 0.875rem;
         }
 
         .achievement-item {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            gap: 0.875rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
             font-size: 0.7rem;
-            min-height: 60px;
-            border-radius: 4px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            min-height: 65px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            border-color: #3b82f6;
         }
 
         .achievement-icon {
-            width: 24px;
-            height: 24px;
-            background: #3b82f6;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.875rem;
             flex-shrink: 0;
             margin-top: 0.125rem;
-            border-radius: 4px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 800;
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
         }
 
         /* Photo Grid */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-top: 0.75rem;
+            gap: 0.875rem;
+            margin-top: 0.875rem;
         }
 
         .photo-box {
             aspect-ratio: 1;
-            background: #f3f4f6;
-            border: 1px solid #d1d5db;
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            border: 2px dashed #d1d5db;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #9ca3af;
-            font-size: 0.6rem;
+            font-size: 0.625rem;
             min-height: 50px;
-            border-radius: 4px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .photo-box:hover {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border-color: #818cf8;
+            color: #4f46e5;
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
         }
 
         /* Right Sidebar Content */
         .right-sidebar-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 0.25rem;
+            gap: 0.625rem;
+            padding: 0.625rem;
+            margin-bottom: 0.625rem;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
             font-size: 0.7rem;
-            line-height: 1.3;
-            border: 1px solid rgba(255,255,255,0.2);
+            line-height: 1.4;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.2s ease;
+        }
+
+        .right-sidebar-item:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .sidebar-button {
-            width: 8px;
-            height: 6px;
-            background: #60a5fa;
-            border-radius: 0.125rem;
+            width: 10px;
+            height: 8px;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            border-radius: 3px;
             flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(96, 165, 250, 0.5);
+        }
+
+        /* Add New Report Button */
+        .add-report-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .add-report-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(16, 185, 129, 0.5);
+        }
+
+        .success-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            position: fixed;
+            top: 75px;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
         }
 
         /* Responsive */
@@ -360,11 +495,24 @@
     </style>
 </head>
 <body>
+    <!-- Success Banner -->
+    @if(session('success'))
+    <div class="success-banner">
+        ✅ {{ session('success') }}
+    </div>
+    @endif
+
     <!-- Header -->
     <div class="header">
         <h1>One Page HSE Monthly Executive Report</h1>
         <div class="month">Month: {{ $hseData['month'] ?? 'Oct-25' }}</div>
     </div>
+
+    <!-- Add New Report Button -->
+    <a href="{{ route('hse-report.create') }}" class="add-report-btn">
+        <span style="font-size: 1.5rem;">➕</span>
+        <span>Add New Report</span>
+    </a>
 
     <div class="main-container">
         <!-- Left Sidebar -->
@@ -519,8 +667,8 @@
                     <div class="section-header">Project HSE Statistics Report</div>
                     <div class="section-content">
                         <!-- HSE Leading Indicators -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Leading Indicators</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Leading Indicators</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -544,8 +692,8 @@
                         </div>
 
                         <!-- Description Section 1 -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Description</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">Description</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -579,8 +727,8 @@
                         </div>
 
                         <!-- Description - Training (No.) -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Description - Training (No.)</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">Description - Training (No.)</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -632,8 +780,8 @@
                         </div>
 
                         <!-- HSE Lagging Indicators -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Lagging Indicators</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Lagging Indicators</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -667,54 +815,54 @@
                         <!-- Manhours without LTI -->
                         <div class="data-box large">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">Manhours without LTI</div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">{{ number_format($hseData['total_manhours_with_lti'] ?? 125000) }}</div>
+                                <div style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.625rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Manhours without LTI</div>
+                                <div style="font-size: 1.75rem; font-weight: 800; color: #3b82f6;">{{ number_format($hseData['total_manhours_with_lti'] ?? 125000) }}</div>
                             </div>
                         </div>
 
                         <!-- HSE Training Statistics -->
                         <div class="data-box large">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.875rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Statistics (No. of Sessions)</div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #10b981;">{{ $hseData['training_conducted'] ?? '25' }}</div>
+                                <div style="font-size: 0.875rem; font-weight: 700; margin-bottom: 0.625rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">HSE Training Statistics (No. of Sessions)</div>
+                                <div style="font-size: 1.75rem; font-weight: 800; color: #10b981;">{{ $hseData['training_conducted'] ?? '25' }}</div>
                             </div>
                         </div>
 
                         <!-- HSE Training Hours -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Training Hours</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #10b981;">{{ $hseData['training_hours'] ?? '180' }}</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">HSE Training Hours</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #10b981;">{{ $hseData['training_hours'] ?? '180' }}</div>
                             </div>
                         </div>
 
                         <!-- Near Miss Report -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Near Miss Report</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #f59e0b;">0</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Near Miss Report</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #f59e0b;">0</div>
                             </div>
                         </div>
 
                         <!-- TRCF -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Total Reportable Case Frequency (TRCF)</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['trcf'] ?? '0.0' }}</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Total Reportable Case Frequency (TRCF)</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #ef4444;">{{ $hseData['trcf'] ?? '0.0' }}</div>
                             </div>
                         </div>
 
                         <!-- Accident/Incident Statistics -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Accident/Incident (A/I) Statistics</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['accident_incident'] ?? '0' }}</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Accident/Incident (A/I) Statistics</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #ef4444;">{{ $hseData['accident_incident'] ?? '0' }}</div>
                             </div>
                         </div>
 
                         <!-- HSE Observation -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Observation</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Observation</h3>
                             <div class="observation-grid">
                                 <div class="observation-item white">
                                     <div class="observation-label">Cumulative</div>
@@ -753,32 +901,32 @@
                         <!-- LTIFR -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Lost Time Incident Frequency Rate (LTIFR)</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #ef4444;">{{ $hseData['ltifr'] ?? '0.0' }}</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Lost Time Incident Frequency Rate (LTIFR)</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #ef4444;">{{ $hseData['ltifr'] ?? '0.0' }}</div>
                             </div>
                         </div>
 
                         <!-- HSE Audit -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Audit</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #3b82f6;">{{ $hseData['audit'] ?? '3' }}</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">HSE Audit</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #3b82f6;">{{ $hseData['audit'] ?? '3' }}</div>
                             </div>
                         </div>
 
                         <!-- Reward Recognition -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">Reward Recognition (No. of Worker)</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #10b981;">45</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">Reward Recognition (No. of Worker)</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #10b981;">45</div>
                             </div>
                         </div>
 
                         <!-- HSE Inspection -->
                         <div class="data-box small">
                             <div style="text-align: center;">
-                                <div style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem;">HSE Inspection</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #3b82f6;">12</div>
+                                <div style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.5rem; color: #475569; text-transform: uppercase; letter-spacing: 0.025em;">HSE Inspection</div>
+                                <div style="font-size: 1.375rem; font-weight: 800; color: #3b82f6;">12</div>
                             </div>
                         </div>
                     </div>
@@ -791,8 +939,8 @@
                     <div class="section-header">HSE Deliverables</div>
                     <div class="section-content">
                         <!-- HSE Deliverables Status -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Deliverables Status</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Deliverables Status</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -814,8 +962,8 @@
                         </div>
 
                         <!-- Permit To Work Statistics -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Permit To Work Statistics</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">Permit To Work Statistics</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -840,7 +988,7 @@
 
                         <!-- HSE Achievement -->
                         <div style="margin-bottom: 1.5rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE Achievement</h3>
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Achievement</h3>
                             <div class="achievement-grid">
                                 @foreach($hseAchievement ?? [] as $achievement)
                                 <div class="achievement-item">
@@ -858,8 +1006,8 @@
                         </div>
 
                         <!-- Additional HSE Data -->
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">HSE</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE</h3>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -891,16 +1039,16 @@
                 <div class="section" style="margin-bottom: 2rem;">
                     <div class="section-header">Meeting & Workshop</div>
                     <div class="section-content">
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Meeting & Workshop</h3>
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="width: 8px; height: 8px; background: #60a5fa; border-radius: 2px; flex-shrink: 0;"></span>
-                                    <span style="font-size: 0.75rem;">Knowledge Share</span>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">Meeting & Workshop</h3>
+                            <div style="display: flex; flex-direction: column; gap: 0.625rem;">
+                                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 2px solid #e2e8f0; padding: 0.875rem; border-radius: 10px; display: flex; align-items: center; gap: 0.625rem; transition: all 0.3s ease;">
+                                    <span style="width: 10px; height: 10px; background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); border-radius: 3px; flex-shrink: 0; box-shadow: 0 2px 4px rgba(96, 165, 250, 0.4);"></span>
+                                    <span style="font-size: 0.75rem; font-weight: 600;">Knowledge Share</span>
                                 </div>
-                                <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem; border-radius: 4px; display: flex; align-items: center; gap: 0.5rem;">
-                                    <span style="width: 8px; height: 8px; background: #60a5fa; border-radius: 2px; flex-shrink: 0;"></span>
-                                    <span style="font-size: 0.75rem;">Leadership Tour</span>
+                                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 2px solid #e2e8f0; padding: 0.875rem; border-radius: 10px; display: flex; align-items: center; gap: 0.625rem; transition: all 0.3s ease;">
+                                    <span style="width: 10px; height: 10px; background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%); border-radius: 3px; flex-shrink: 0; box-shadow: 0 2px 4px rgba(96, 165, 250, 0.4);"></span>
+                                    <span style="font-size: 0.75rem; font-weight: 600;">Leadership Tour</span>
                                 </div>
                             </div>
                         </div>
@@ -911,8 +1059,8 @@
                 <div class="section">
                     <div class="section-header">Photographs</div>
                     <div class="section-content">
-                        <div style="margin-bottom: 1rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.5rem; background: #6b8cae; color: white; padding: 0.4rem 0.5rem; border-radius: 2px;">Photographs</h3>
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">Photographs</h3>
                             <div class="photo-grid">
                                 <div class="photo-box">Photo 1</div>
                                 <div class="photo-box">Photo 2</div>
@@ -930,5 +1078,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Auto-hide success banner after 5 seconds
+        const successBanner = document.querySelector('.success-banner');
+        if (successBanner) {
+            setTimeout(() => {
+                successBanner.style.transition = 'all 0.5s ease';
+                successBanner.style.transform = 'translateY(-100%)';
+                successBanner.style.opacity = '0';
+                setTimeout(() => {
+                    successBanner.remove();
+                }, 500);
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

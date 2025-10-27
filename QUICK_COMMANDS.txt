@@ -1,0 +1,138 @@
+╔══════════════════════════════════════════════════════════════╗
+║                HSE REPORT SYSTEM - QUICK COMMANDS             ║
+╚══════════════════════════════════════════════════════════════╝
+
+📦 START SERVER
+═══════════════
+php artisan serve
+
+
+🌐 URLS
+═══════════════
+Dashboard    : http://localhost:8000/
+Form         : http://localhost:8000/form
+
+
+🎯 QUICK TEST WORKFLOW
+═══════════════════════
+1. php artisan serve
+2. Buka: http://localhost:8000/form
+3. Klik: "💾 Submit Report" (data sudah terisi!)
+4. Lihat hasil di dashboard
+
+
+🔄 REFRESH RANDOM VALUES
+═══════════════════════════
+- Buka form: http://localhost:8000/form
+- Refresh browser (F5) atau
+- Klik tombol "🔄 Refresh Random Values"
+
+
+💾 CHECK DATABASE
+═══════════════════
+php artisan tinker
+
+>>> App\Models\HseReport::count()
+>>> App\Models\HseReport::latest()->first()
+>>> App\Models\HseReport::all()
+
+
+🗄️ DATABASE COMMANDS
+══════════════════════
+Reset database:
+php artisan migrate:fresh
+
+Create new migration:
+php artisan make:migration create_table_name
+
+
+📊 ROUTES LIST
+═══════════════
+php artisan route:list --except-vendor
+
+
+🔍 CHECK LOGS
+═══════════════
+storage/logs/laravel.log
+
+
+🧹 CLEAR CACHE (jika ada masalah)
+═══════════════════════════════════
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+
+📁 FILE LOCATIONS
+═══════════════════
+Controller  : app/Http/Controllers/HseReportController.php
+Model       : app/Models/HseReport.php
+Dashboard   : resources/views/hse-report-exact-match.blade.php
+Form        : resources/views/hse-form.blade.php
+Routes      : routes/web.php
+Migration   : database/migrations/2025_10_27_141026_create_hse_reports_table.php
+Database    : database/database.sqlite
+
+
+✨ FEATURES
+═══════════
+✅ Form dengan random dummy values
+✅ Random berubah setiap refresh
+✅ Submit langsung (tidak perlu input manual)
+✅ Dashboard modern dengan gradient design
+✅ Success message dengan auto-hide
+✅ Floating "Add New Report" button
+✅ Database SQLite untuk penyimpanan
+✅ Responsive design
+
+
+🎲 RANDOM DATA RANGES
+═══════════════════════
+Month              : Jan-25 s/d Dec-25
+Days Completed     : 100 - 500
+Total Manhours     : 50,000 - 200,000
+Persons Inducted   : 200 - 800
+Training Sessions  : 15 - 50
+Training Hours     : 100 - 500
+HSE Observations   : 500 - 2,000
+Meetings           : 5 - 20
+Permits            : 40 - 150
+TRCF/LTIFR        : 0.0 - 5.0
+
+
+🚀 DEPLOYMENT CHECKLIST
+═══════════════════════
+[ ] php artisan migrate
+[ ] php artisan serve
+[ ] Test form: http://localhost:8000/form
+[ ] Submit test data
+[ ] Check dashboard: http://localhost:8000/
+[ ] Verify data saved
+
+
+💡 TIPS
+═══════
+- Refresh form berkali-kali untuk variasi data
+- Submit beberapa kali untuk punya multiple records
+- Dashboard selalu show data terbaru
+- Success message hilang otomatis 5 detik
+
+
+📞 DOCUMENTATION
+═══════════════════
+Main Guide     : HSE_FORM_USAGE.md
+Setup Info     : SETUP_COMPLETE.md
+This File     : QUICK_COMMANDS.txt
+
+
+🎉 READY TO GO!
+═══════════════════
+
+Jalankan: php artisan serve
+Buka    : http://localhost:8000/form
+Submit  : One Click!
+Done    : Data tersimpan & tampil di dashboard!
+
+═══════════════════════════════════════════════════════════════
+
