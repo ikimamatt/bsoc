@@ -480,4 +480,14 @@ class HseReportController extends Controller
 
                 return redirect('/')->with('success', 'HSE Report saved successfully!');
             }
+
+            public function monitoring()
+            {
+                return view('hse-monitoring-dashboard');
+            }
+
+            public function scorecard()
+            {
+                return view('performance-scorecard');
+            }
         }

@@ -459,6 +459,31 @@
             box-shadow: 0 12px 32px rgba(16, 185, 129, 0.5);
         }
 
+        /* Monitoring Tool Button */
+        .monitoring-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .monitoring-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(59, 130, 246, 0.5);
+        }
+
         .success-banner {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -512,6 +537,12 @@
     <a href="{{ route('hse-report.create') }}" class="add-report-btn">
         <span style="font-size: 1.5rem;">➕</span>
         <span>Add New Report</span>
+    </a>
+
+    <!-- Monitoring Dashboard Link -->
+    <a href="{{ route('hse-monitoring') }}" class="monitoring-btn">
+        <span style="font-size: 1.5rem;">📊</span>
+        <span>Monitoring Tool</span>
     </a>
 
     <div class="main-container">
