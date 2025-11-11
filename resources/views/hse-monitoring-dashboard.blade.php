@@ -45,7 +45,8 @@
         }
 
         .header .brand {
-            color: #ffa726;
+            color: #1976d2;
+            font-weight: 800;
         }
 
         .main-content {
@@ -187,7 +188,7 @@
 
     <div class="container">
         <div class="header">
-            <h1><span class="brand">SHEQXEL™</span> HSE Performance Monitoring Tool - Manager Version</h1>
+            <h1><span class="brand">GDAP</span> HSE Performance Monitoring Tool - Manager Version</h1>
         </div>
 
         <div class="main-content">
@@ -299,7 +300,7 @@
 
         <div class="footer">
             <div class="version">Version: 1.0</div>
-            <div class="developed-by">Developed by SHEQXEL</div>
+            <div class="developed-by">Developed by GDAP</div>
         </div>
     </div>
 </body>

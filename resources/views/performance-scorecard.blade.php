@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHEQXEL™ Performance Scorecard</title>
+    <title>GDAP Performance Scorecard</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -40,19 +40,7 @@
         .brand {
             font-size: 1.75rem;
             font-weight: 800;
-        }
-
-        .brand .sheq {
             color: #1976d2;
-        }
-
-        .brand .xel {
-            color: #ffa726;
-        }
-
-        .brand .tm {
-            font-size: 0.9rem;
-            vertical-align: super;
         }
 
         .title {
@@ -306,9 +294,7 @@
     <!-- Top Header -->
     <div class="top-header">
         <div class="header-left">
-            <div class="brand">
-                <span class="sheq">SHEQ</span><span class="xel">XEL</span><span class="tm">™</span>
-            </div>
+            <div class="brand">GDAP</div>
             <div class="title">Performance Scorecard</div>
         </div>
         <div class="header-buttons">
@@ -344,7 +330,7 @@
                     <option value="all">All</option>
                     <option value="elisafety">ELISAFETY</option>
                     <option value="matsfheld">MATSFHELD</option>
-                    <option value="sheqxel">SHEQXEL</option>
+                    <option value="gdap">GDAP</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -574,15 +560,15 @@
                         <td><strong>86%</strong></td>
                     </tr>
 
-                    <!-- SHEQXEL -->
-                    <tr class="expandable-row" onclick="toggleRows('sheqxel')">
+                    <!-- GDAP -->
+                    <tr class="expandable-row" onclick="toggleRows('gdap')">
                         <td class="company-name">
-                            <span class="expand-icon" id="icon-sheqxel">⊟</span>
-                            SHEQXEL
+                            <span class="expand-icon" id="icon-gdap">⊟</span>
+                            GDAP
                         </td>
                         <td colspan="17"></td>
                     </tr>
-                    <tr class="sheqxel-row">
+                    <tr class="gdap-row">
                         <td></td>
                         <td class="year-cell">2021</td>
                         <td class="metric-cell">1</td>
@@ -602,7 +588,7 @@
                         <td class="percentage-cell">100%<span class="arrow-up">▲</span></td>
                         <td class="percentage-cell">100%</td>
                     </tr>
-                    <tr class="sheqxel-row">
+                    <tr class="gdap-row">
                         <td></td>
                         <td class="year-cell">2022</td>
                         <td class="metric-cell">2</td>
@@ -622,7 +608,7 @@
                         <td class="percentage-cell">67%<span class="arrow-down">▼</span></td>
                         <td class="percentage-cell">67%</td>
                     </tr>
-                    <tr class="sheqxel-row">
+                    <tr class="gdap-row">
                         <td></td>
                         <td class="year-cell">2023</td>
                         <td class="metric-cell">1</td>
@@ -642,7 +628,7 @@
                         <td class="percentage-cell">100%<span class="arrow-up">▲</span></td>
                         <td class="percentage-cell">100%</td>
                     </tr>
-                    <tr class="sheqxel-row total-row">
+                    <tr class="gdap-row total-row">
                         <td></td>
                         <td><strong>Total</strong></td>
                         <td><strong>4</strong></td>
