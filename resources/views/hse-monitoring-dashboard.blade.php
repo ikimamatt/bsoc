@@ -37,11 +37,27 @@
             margin-bottom: 3rem;
         }
 
+        .header-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .header-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
         .header h1 {
             font-size: 2.25rem;
             font-weight: 700;
             color: #1565c0;
-            margin-bottom: 0.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
         }
 
         .header .brand {
@@ -167,6 +183,10 @@
                 font-size: 1.5rem;
             }
             
+            .header-logo {
+                height: 50px;
+            }
+            
             .container {
                 padding: 2rem 1.5rem;
             }
@@ -188,7 +208,10 @@
 
     <div class="container">
         <div class="header">
-            <h1><span class="brand">GDAP</span> HSE Performance Monitoring Tool - Manager Version</h1>
+            <div class="header-logo-container">
+                <img src="{{ asset('images/gdap.jpg') }}" alt="GDAP Logo" class="header-logo">
+                <h1><span class="brand">GDAP</span> HSE Performance Monitoring Tool - Manager Version</h1>
+            </div>
         </div>
 
         <div class="main-content">

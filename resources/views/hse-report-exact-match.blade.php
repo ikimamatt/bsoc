@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Page HSE Monthly Executive Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -35,6 +36,18 @@
             z-index: 1000;
             font-weight: 600;
             box-shadow: 0 4px 20px rgba(30, 64, 175, 0.25);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         .header h1 {
@@ -508,6 +521,25 @@
             }
         }
 
+        /* Chart Container */
+        .chart-container {
+            position: relative;
+            height: 200px;
+            margin-bottom: 1.25rem;
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .chart-container.large {
+            height: 250px;
+        }
+
+        .chart-container.small {
+            height: 150px;
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .left-sidebar {
@@ -529,7 +561,10 @@
 
     <!-- Header -->
     <div class="header">
-        <h1>One Page HSE Monthly Executive Report</h1>
+        <div class="header-left">
+            <img src="{{ asset('images/gdap.jpg') }}" alt="GDAP Logo" class="header-logo">
+            <h1>GDAP - One Page HSE Monthly Executive Report</h1>
+        </div>
         <div class="month">Month: {{ $hseData['month'] ?? 'Oct-25' }}</div>
     </div>
 
@@ -697,27 +732,451 @@
                 <div class="section">
                     <div class="section-header">Project HSE Statistics Report</div>
                     <div class="section-content">
-                        <!-- HSE Leading Indicators -->
+                        <!-- HSSE Performance -->
                         <div style="margin-bottom: 1.25rem;">
-                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Leading Indicators</h3>
-                            <table class="table">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSSE Performance</h3>
+                            <table class="table" style="font-size: 0.65rem;">
                                 <thead>
                                     <tr>
-                                        <th>Description</th>
-                                        <th>{{ $hseData['month'] ?? 'Oct-25' }}</th>
-                                        <th>YTD</th>
-                                        <th>ITD</th>
+                                        <th style="width: 5%;">No</th>
+                                        <th style="width: 40%;">HSSE Performance</th>
+                                        <th style="width: 20%;">Target</th>
+                                        <th style="width: 20%;">Realization</th>
+                                        <th style="width: 15%;">Achievement (%)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($hseData['leading_indicators'] ?? [] as $indicator)
-                                    <tr>
-                                        <td>{{ $indicator['description'] }}</td>
-                                        <td>{{ $indicator['oct25'] }}</td>
-                                        <td>{{ $indicator['ytd'] }}</td>
-                                        <td>{{ $indicator['itd'] }}</td>
+                                    <!-- Section A: Leading Indicator -->
+                                    <tr style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                                        <td colspan="5" style="font-weight: 700; padding: 0.5rem;">A. Leading Indicator</td>
                                     </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>1</td>
+                                        <td>MWT</td>
+                                        <td>1x / 3 Months</td>
+                                        <td>{{ $hseData['hsse_performance']['mwt_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['mwt_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Senior Management (Director / Manager)</td>
+                                        <td>1x / 3 Months</td>
+                                        <td>{{ $hseData['hsse_performance']['senior_mgmt_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['senior_mgmt_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Rig Manager</td>
+                                        <td>1x / Month</td>
+                                        <td>{{ $hseData['hsse_performance']['rig_manager_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['rig_manager_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">HSSE Manager</td>
+                                        <td>1x / Month</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_manager_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_manager_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 2: Socialization HSSE Policy -->
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Socialization HSSE Policy</td>
+                                        <td>Yearly</td>
+                                        <td>{{ $hseData['hsse_performance']['socialization_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['socialization_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 3: HSSE Meeting -->
+                                    <tr>
+                                        <td>3</td>
+                                        <td>HSSE Meeting</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Pre-Job Meeting / Toolbox Meeting</td>
+                                        <td>Setiap shift</td>
+                                        <td>{{ $hseData['hsse_performance']['toolbox_realization'] ?? '60' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['toolbox_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Safety Talks</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_talks_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_talks_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;"># Speak Up</td>
+                                        <td>Daily</td>
+                                        <td>{{ $hseData['hsse_performance']['speak_up_realization'] ?? '30' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['speak_up_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;"># Perwira Safety</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['perwira_safety_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['perwira_safety_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;"># View & Review</td>
+                                        <td>Daily</td>
+                                        <td>{{ $hseData['hsse_performance']['view_review_realization'] ?? '30' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['view_review_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Safety Stand Down</td>
+                                        <td>Triwulan</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_stand_down_realization'] ?? '3' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_stand_down_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">HSE Coordination Meeting / Level III</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_coord_meeting_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_coord_meeting_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">HSE Meeting Level IV</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_meeting_lv4_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_meeting_lv4_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 4: HOC CARD -->
+                                    <tr>
+                                        <td>4</td>
+                                        <td>HOC CARD (Safety & Intervention Program)</td>
+                                        <td>1 card per person/day</td>
+                                        <td>{{ $hseData['hsse_performance']['hoc_card_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hoc_card_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 5: HSSE Performance Reporting -->
+                                    <tr>
+                                        <td>5</td>
+                                        <td>HSSE Performance Reporting</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['performance_reporting_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['performance_reporting_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 6: Medical Check-up -->
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Medical Check-up</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Pre-Employment (Before the project starts)</td>
+                                        <td>Yearly No MCU Entry</td>
+                                        <td>{{ $hseData['hsse_performance']['pre_employment_mcu_realization'] ?? '(Updated on Matrix Training)' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['pre_employment_mcu_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Annual MCU (1x a year)</td>
+                                        <td>{{ $hseData['hsse_performance']['annual_mcu_target'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['annual_mcu_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['annual_mcu_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 7: Safety induction -->
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Safety induction</td>
+                                        <td>Every first entry</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_induction_realization'] ?? '7' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_induction_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 8: HSE Training Certification and Competence -->
+                                    <tr>
+                                        <td>8</td>
+                                        <td>HSE Training Certification and Competence (MIGAS and Government Regulations)</td>
+                                        <td>100%</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_training_cert_realization'] ?? '(Updated on Matrix Training)' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hse_training_cert_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 9: HSSE Inspection -->
+                                    <tr>
+                                        <td>9</td>
+                                        <td>HSSE Inspection</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Industrial Hygiene Monitoring / Inspection of the quality of the work environment: illumination Survey industrial Noise Survey</td>
+                                        <td>Yearly</td>
+                                        <td>{{ $hseData['hsse_performance']['industrial_hygiene_realization'] ?? '1 (Noise)' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['industrial_hygiene_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Daily Inspection Crane</td>
+                                        <td>Daily</td>
+                                        <td>{{ $hseData['hsse_performance']['daily_crane_inspection_realization'] ?? '30' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['daily_crane_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Weekly Inspection Crane</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['weekly_crane_inspection_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['weekly_crane_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Fire Pump Inspection & Testing</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['fire_pump_inspection_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['fire_pump_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Hand & Portable Power Tools Check List</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['power_tools_check_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['power_tools_check_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Waste Transfer Note</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['waste_transfer_note_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['waste_transfer_note_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Workplace Inspection (Inspeksi Kesehatan & Kebersihan)</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['workplace_inspection_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['workplace_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Housekeeping, Proper Storage & Used Proper Tool</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['housekeeping_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['housekeeping_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Safety Equipment and Maintenance</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_equipment_maintenance_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['safety_equipment_maintenance_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Section: Inspection -->
+                                    <tr style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                                        <td colspan="5" style="font-weight: 700; padding: 0.5rem;">Inspection</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>PPE Inspection</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['ppe_inspection_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['ppe_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Lifting Gear Inspection</td>
+                                        <td>1x per 6 months</td>
+                                        <td>{{ $hseData['hsse_performance']['lifting_gear_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['lifting_gear_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Rig Inspection</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['rig_inspection_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['rig_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>SECE Inspection</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['sece_inspection_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['sece_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Preventive Maintenance System</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['preventive_maintenance_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['preventive_maintenance_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Hygiene Inspection at Galley</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['hygiene_inspection_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hygiene_inspection_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Pest Control</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['pest_control_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['pest_control_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 10: Emergency Drill -->
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Emergency Drill</td>
+                                        <td>Weekly</td>
+                                        <td>{{ $hseData['hsse_performance']['emergency_drill_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['emergency_drill_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Fire Drill</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Abandoning Rig</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- General Alarm – Mustering Only Man</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Overboard Rescue</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Medevac (Illness Case & Evacuation)</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Security Threat</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">- Environment – Oil Spill on Rig</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Abandon & Fire Drill on 15 Oct 2025</td>
+                                        <td>15 Oct 2025</td>
+                                        <td></td>
+                                        <td>100</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Confined Space Drill on 29 Oct 2025</td>
+                                        <td>29 Oct 2025</td>
+                                        <td></td>
+                                        <td>100</td>
+                                    </tr>
+                                    
+                                    <!-- Item 11: HSSE Promotion -->
+                                    <tr>
+                                        <td>11</td>
+                                        <td>HSSE Promotion</td>
+                                        <td></td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_promotion_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_promotion_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 12: HSSE Award -->
+                                    <tr>
+                                        <td>12</td>
+                                        <td>HSSE Award</td>
+                                        <td>Monthly</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_award_realization'] ?? '4' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_award_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 13: HSSE Internal Audit -->
+                                    <tr>
+                                        <td>13</td>
+                                        <td>HSSE Internal Audit</td>
+                                        <td>1x per 6 months</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_internal_audit_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['hsse_internal_audit_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 14: Investigation Incident -->
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Investigation Incident</td>
+                                        <td></td>
+                                        <td>{{ $hseData['hsse_performance']['investigation_incident_realization'] ?? '0' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['investigation_incident_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 15: Follow up Audit/Inspection -->
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Follow up Audit/Inspection</td>
+                                        <td></td>
+                                        <td>{{ $hseData['hsse_performance']['follow_up_audit_realization'] ?? '1' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['follow_up_audit_achievement'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 16: Audit CSMS -->
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Audit CSMS</td>
+                                        <td></td>
+                                        <td>{{ $hseData['hsse_performance']['audit_csms_realization'] ?? '' }}</td>
+                                        <td>{{ $hseData['hsse_performance']['audit_csms_achievement'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">CSMS PB (Penilaian Berjalan) – Work-in Progress</td>
+                                        <td>September, April</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">CSMS PA (Penilaian Akhir) – Final Evaluation</td>
+                                        <td>June 2027</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -813,24 +1272,124 @@
                         <!-- HSE Lagging Indicators -->
                         <div style="margin-bottom: 1.25rem;">
                             <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Lagging Indicators</h3>
-                            <table class="table">
+                            <table class="table" style="font-size: 0.65rem;">
                                 <thead>
                                     <tr>
-                                        <th>Description</th>
-                                        <th>{{ $hseData['month'] ?? 'Oct-25' }}</th>
-                                        <th>YTD</th>
-                                        <th>ITD</th>
+                                        <th style="width: 5%;">B</th>
+                                        <th style="width: 50%;">Lagging Indicator</th>
+                                        <th style="width: 15%;">{{ $hseData['month'] ?? 'Oct-25' }}</th>
+                                        <th style="width: 15%;">YTD</th>
+                                        <th style="width: 15%;">ITD</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($hseData['lagging_indicators'] ?? [] as $lagging)
-                                    <tr>
-                                        <td>{{ $lagging['description'] }}</td>
-                                        <td>{{ $lagging['oct25'] }}</td>
-                                        <td>{{ $lagging['ytd'] }}</td>
-                                        <td>{{ $lagging['itd'] }}</td>
+                                    <!-- Section B: Lagging Indicator -->
+                                    <tr style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                                        <td colspan="5" style="font-weight: 700; padding: 0.5rem;">B. Lagging Indicator</td>
                                     </tr>
-                                    @endforeach
+                                    
+                                    <!-- Item 1: Number of Nearmiss -->
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Number of Nearmiss</td>
+                                        <td>{{ $hseData['lagging_indicators']['nearmiss_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['nearmiss_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['nearmiss_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 2: Number of First Aid -->
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Number of First Aid</td>
+                                        <td>{{ $hseData['lagging_indicators']['first_aid_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['first_aid_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['first_aid_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 3: Number Recordable Case -->
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Number Recordable Case</td>
+                                        <td>{{ $hseData['lagging_indicators']['recordable_case_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['recordable_case_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['recordable_case_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Fatality</td>
+                                        <td>{{ $hseData['lagging_indicators']['fatality_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['fatality_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['fatality_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Loss Time Incident (LTI)</td>
+                                        <td>{{ $hseData['lagging_indicators']['lti_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['lti_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['lti_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Restricted Work Day Case (RWDC)</td>
+                                        <td>{{ $hseData['lagging_indicators']['rwdc_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['rwdc_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['rwdc_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Medical Treatment Case (MTC)</td>
+                                        <td>{{ $hseData['lagging_indicators']['mtc_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['mtc_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['mtc_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 4: Enviromental Case -->
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Enviromental Case</td>
+                                        <td>{{ $hseData['lagging_indicators']['environmental_case_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['environmental_case_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['environmental_case_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Oil Spill</td>
+                                        <td>{{ $hseData['lagging_indicators']['oil_spill_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['oil_spill_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['oil_spill_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Hydrocarbon Release</td>
+                                        <td>{{ $hseData['lagging_indicators']['hydrocarbon_release_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['hydrocarbon_release_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['hydrocarbon_release_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="padding-left: 1rem;">Non-Compliance Case</td>
+                                        <td>{{ $hseData['lagging_indicators']['non_compliance_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['non_compliance_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['non_compliance_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 5: Fire / Explosion -->
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Fire / Explosion</td>
+                                        <td>{{ $hseData['lagging_indicators']['fire_explosion_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['fire_explosion_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['fire_explosion_itd'] ?? '100' }}</td>
+                                    </tr>
+                                    
+                                    <!-- Item 6: Property Damage -->
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Property Damage</td>
+                                        <td>{{ $hseData['lagging_indicators']['property_damage_oct25'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['property_damage_ytd'] ?? '0' }}</td>
+                                        <td>{{ $hseData['lagging_indicators']['property_damage_itd'] ?? '100' }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -926,6 +1485,26 @@
                                     <div class="observation-label">Act</div>
                                     <div class="observation-value">10</div>
                                 </div>
+                            </div>
+                            
+                            <!-- HSE Observation Chart -->
+                            <div class="chart-container">
+                                <canvas id="observationChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- HSE Statistics Charts -->
+                        <div style="margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Statistics Overview</h3>
+                            
+                            <!-- Training & Hours Chart -->
+                            <div class="chart-container">
+                                <canvas id="trainingChart"></canvas>
+                            </div>
+                            
+                            <!-- Incident & Safety Metrics Chart -->
+                            <div class="chart-container">
+                                <canvas id="incidentChart"></canvas>
                             </div>
                         </div>
 
@@ -1122,6 +1701,210 @@
                     successBanner.remove();
                 }, 500);
             }, 5000);
+        }
+
+        // HSE Observation Chart (Pie Chart)
+        const observationCtx = document.getElementById('observationChart');
+        if (observationCtx) {
+            new Chart(observationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Positive', 'Negative'],
+                    datasets: [{
+                        label: 'HSE Observations',
+                        data: [
+                            {{ $hseData['hse_observations_positive'] ?? 850 }},
+                            {{ $hseData['hse_observations_negative'] ?? 400 }}
+                        ],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(239, 68, 68, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(239, 68, 68, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    size: 10,
+                                    family: 'Inter'
+                                },
+                                padding: 10
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'HSE Observation Distribution',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                                family: 'Inter'
+                            },
+                            padding: {
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Training & Hours Chart (Bar Chart)
+        const trainingCtx = document.getElementById('trainingChart');
+        if (trainingCtx) {
+            new Chart(trainingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Training Sessions', 'Training Hours'],
+                    datasets: [{
+                        label: 'HSE Training',
+                        data: [
+                            {{ $hseData['training_conducted'] ?? 25 }},
+                            {{ $hseData['training_hours'] ?? 180 }}
+                        ],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(59, 130, 246, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(59, 130, 246, 1)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 9,
+                                    family: 'Inter'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 9,
+                                    family: 'Inter'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'HSE Training Statistics',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                                family: 'Inter'
+                            },
+                            padding: {
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Incident & Safety Metrics Chart (Line Chart)
+        const incidentCtx = document.getElementById('incidentChart');
+        if (incidentCtx) {
+            new Chart(incidentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['TRCF', 'LTIFR', 'A/I', 'Near Miss'],
+                    datasets: [{
+                        label: 'Safety Metrics',
+                        data: [
+                            {{ $hseData['trcf'] ?? 0.0 }},
+                            {{ $hseData['ltifr'] ?? 0.0 }},
+                            {{ $hseData['accident_incident'] ?? 0 }},
+                            0
+                        ],
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: 'rgba(239, 68, 68, 1)',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                font: {
+                                    size: 9,
+                                    family: 'Inter'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                font: {
+                                    size: 9,
+                                    family: 'Inter'
+                                }
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Incident & Safety Metrics',
+                            font: {
+                                size: 12,
+                                weight: 'bold',
+                                family: 'Inter'
+                            },
+                            padding: {
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+            });
         }
     </script>
 </body>
