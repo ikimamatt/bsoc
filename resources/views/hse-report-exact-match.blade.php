@@ -19,6 +19,15 @@
             background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
             min-height: 100vh;
             color: #1e293b;
+            overflow-x: auto;
+        }
+
+        .page-wrapper {
+            transform: scale(0.67);
+            transform-origin: top left;
+            width: 149.25%; /* 100% / 0.67 = 149.25% */
+            min-height: 149.25vh;
+            padding-top: 75px; /* Space untuk header yang fixed */
         }
 
         .header {
@@ -102,7 +111,7 @@
         }
 
         .main-container {
-            margin-top: 75px;
+            margin-top: 0;
             display: flex;
             min-height: calc(100vh - 75px);
         }
@@ -872,6 +881,7 @@
         <span>Monitoring Tool</span>
     </a>
 
+    <div class="page-wrapper">
     <div class="main-container">
         <!-- Left Sidebar -->
         <div class="left-sidebar">
@@ -2075,6 +2085,7 @@
             </div>
         </div>
     </div>
+    </div>
 
     <script>
         // Auto-hide success banner after 5 seconds
@@ -2309,5 +2320,6 @@
             window.location.href = url.toString();
         }
     </script>
+    </div>
 </body>
 </html>
