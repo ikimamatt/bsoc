@@ -8,3 +8,4 @@ Route::get('/form', [HseReportController::class, 'create'])->name('hse-report.cr
 Route::post('/store', [HseReportController::class, 'store'])->name('hse-report.store');
 Route::get('/monitoring', [HseReportController::class, 'monitoring'])->name('hse-monitoring');
 Route::get('/scorecard', [HseReportController::class, 'scorecard'])->name('performance-scorecard');
+Route::get('/man-hours', [HseReportController::class, 'manHours'])->name('man-hours');

@@ -218,9 +218,10 @@
             <div class="buttons-grid">
                 <!-- Row 1 -->
                 <a href="#" class="menu-button">Getting Started</a>
-                <a href="{{ route('performance-scorecard') }}" class="menu-button">Summary</a>
+                <!-- <a href="{{ route('performance-scorecard') }}" class="menu-button">Summary</a> -->
+                <a href="#" class="menu-button">Summary</a>
                 <a href="#" class="menu-button">HSE Statistics</a>
-                <a href="#" class="menu-button">Man Hours</a>
+                <a href="{{ route('man-hours') }}" class="menu-button">Man Hours</a>
 
                 <!-- Row 2 -->
                 <a href="#" class="menu-button">Incidents</a>

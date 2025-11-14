@@ -490,4 +490,9 @@ class HseReportController extends Controller
             {
                 return view('performance-scorecard');
             }
+
+            public function manHours()
+            {
+                return view('man-hours-analysis');
+            }
         }
