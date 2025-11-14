@@ -700,26 +700,28 @@
                         <!-- HSE Leading Indicators -->
                         <div style="margin-bottom: 1.25rem;">
                             <h3 style="font-size: 0.75rem; font-weight: 700; margin-bottom: 0.625rem; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; padding: 0.625rem 0.875rem; border-radius: 8px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);">HSE Leading Indicators</h3>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Description</th>
-                                        <th>{{ $hseData['month'] ?? 'Oct-25' }}</th>
-                                        <th>YTD</th>
-                                        <th>ITD</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($hseData['leading_indicators'] ?? [] as $indicator)
-                                    <tr>
-                                        <td>{{ $indicator['description'] }}</td>
-                                        <td>{{ $indicator['oct25'] }}</td>
-                                        <td>{{ $indicator['ytd'] }}</td>
-                                        <td>{{ $indicator['itd'] }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            <div style="max-height: 600px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 8px;">
+                                <table class="table" style="margin-bottom: 0;">
+                                    <thead style="position: sticky; top: 0; z-index: 10; background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);">
+                                        <tr>
+                                            <th style="min-width: 250px;">Description</th>
+                                            <th style="min-width: 80px; text-align: center;">{{ $hseData['month'] ?? 'Oct-25' }}</th>
+                                            <th style="min-width: 80px; text-align: center;">YTD</th>
+                                            <th style="min-width: 80px; text-align: center;">ITD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($hseData['leading_indicators'] ?? [] as $indicator)
+                                        <tr>
+                                            <td style="font-size: 0.7rem; line-height: 1.4;">{{ $indicator['description'] }}</td>
+                                            <td style="text-align: center; font-weight: 600;">{{ $indicator['oct25'] ?? '' }}</td>
+                                            <td style="text-align: center; font-weight: 600;">{{ $indicator['ytd'] ?? '' }}</td>
+                                            <td style="text-align: center; font-weight: 600;">{{ $indicator['itd'] ?? '' }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <!-- Description Section 1 -->

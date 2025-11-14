@@ -328,11 +328,87 @@ class HseReportController extends Controller
                     'ltifr' => 0.0,
                     'scope_of_works' => 'Construction & Installation',
                     'leading_indicators' => [
-                        ['description' => '#Project HSE SLT', 'oct25' => '', 'ytd' => '', 'itd' => ''],
-                        ['description' => '#Project HSE Meeting & Workshop', 'oct25' => '', 'ytd' => '', 'itd' => ''],
-                        ['description' => '#Project HSE Coordination Meeting', 'oct25' => '', 'ytd' => '', 'itd' => ''],
-                        ['description' => '#Near Miss Report', 'oct25' => '', 'ytd' => '', 'itd' => ''],
-                        ['description' => '#Emergency Drill', 'oct25' => '', 'ytd' => '', 'itd' => '']
+                        // 1. MWT
+                        ['description' => 'MWT - Senior Management (Director / Manager)', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'MWT - Rig Manager', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'MWT - HSSE Manager', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        
+                        // 2. Socialization HSSE Policy
+                        ['description' => 'Socialization HSSE Policy', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 3. HSSE Meeting
+                        ['description' => 'HSSE Meeting - Pre-Job Meeting / Toolbox Meeting', 'oct25' => '60', 'ytd' => '240', 'itd' => '720'],
+                        ['description' => 'HSSE Meeting - Safety Talks', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Meeting - # Speak Up', 'oct25' => '30', 'ytd' => '120', 'itd' => '360'],
+                        ['description' => 'HSSE Meeting - # Perwira Safety', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Meeting - # View & Review', 'oct25' => '30', 'ytd' => '120', 'itd' => '360'],
+                        ['description' => 'HSSE Meeting - Safety Stand Down', 'oct25' => '3', 'ytd' => '12', 'itd' => '36'],
+                        ['description' => 'HSSE Meeting - HSE Coordination Meeting / Level III', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'HSSE Meeting - HSE Meeting Level IV', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 4. HOC CARD
+                        ['description' => 'HOC CARD (Safety & Intervention Program)', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 5. HSSE Performance Reporting
+                        ['description' => 'HSSE Performance Reporting', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 6. Medical Check-up
+                        ['description' => 'Medical Check-up - Pre-Employment (Before the project starts)', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Medical Check-up - Annual MCU (1x a year)', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 7. Safety induction
+                        ['description' => 'Safety induction', 'oct25' => '7', 'ytd' => '28', 'itd' => '84'],
+                        
+                        // 8. HSE Training Certification and Competence
+                        ['description' => 'HSE Training Certification and Competence (MIGAS and Government Regulations)', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 9. HSSE Inspection
+                        ['description' => 'HSSE Inspection - Industrial Hygiene Monitoring / Inspection', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Daily Inspection Crane', 'oct25' => '30', 'ytd' => '120', 'itd' => '360'],
+                        ['description' => 'HSSE Inspection - Weekly Inspection Crane', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - Fire Pump Inspection & Testing', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - Hand & Portable Power Tools Check List', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - Waste Transfer Note', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - Workplace Inspection (Inspeksi Kesehatan & Kebersihan)', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Housekeeping, Proper Storage & Used Proper Tool', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Safety Equipment and Maintenance', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - PPE Inspection', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Lifting Gear Inspection', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'HSSE Inspection - Rig Inspection', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - SECE Inspection', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Preventive Maintenance System', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        ['description' => 'HSSE Inspection - Hygiene Inspection at Galley', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        ['description' => 'HSSE Inspection - Pest Control', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        
+                        // 10. Emergency Drill
+                        ['description' => 'Emergency Drill - Fire Drill', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Abandoning Rig', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - General Alarm – Mustering Only Man', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Overboard Rescue', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Medevac (Illness Case & Evacuation)', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Security Threat', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Environment – Oil Spill on Rig', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill - Confined Space Drill', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Emergency Drill (Total)', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        
+                        // 11. HSSE Promotion
+                        ['description' => 'HSSE Promotion', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 12. HSSE Award
+                        ['description' => 'HSSE Award', 'oct25' => '4', 'ytd' => '16', 'itd' => '48'],
+                        
+                        // 13. HSSE Internal Audit
+                        ['description' => 'HSSE Internal Audit', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        
+                        // 14. Investigation Incident
+                        ['description' => 'Investigation Incident', 'oct25' => '0', 'ytd' => '0', 'itd' => '0'],
+                        
+                        // 15. Follow up Audit/Inspection
+                        ['description' => 'Follow up Audit/Inspection', 'oct25' => '1', 'ytd' => '4', 'itd' => '12'],
+                        
+                        // 16. Audit CSMS
+                        ['description' => 'Audit CSMS - CSMS PB (Penilaian Berjalan) – Work-in Progress', 'oct25' => '', 'ytd' => '', 'itd' => ''],
+                        ['description' => 'Audit CSMS - CSMS PA (Penilaian Akhir) – Final Evaluation', 'oct25' => '', 'ytd' => '', 'itd' => ''],
                     ],
                     'training_data' => [
                         ['description' => '#Critical Risk Workshop', 'oct25' => '', 'ytd' => '', 'itd' => ''],
