@@ -66,6 +66,39 @@
             border-radius: 12px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .month-selector {
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .month-selector:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .month-selector:focus {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        .month-selector option {
+            background: #1e40af;
+            color: white;
+            padding: 0.5rem;
         }
 
         .main-container {
@@ -540,6 +573,258 @@
             height: 150px;
         }
 
+        /* HSSE Performance Dashboard */
+        .hsse-dashboard {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hsse-dashboard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hsse-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hsse-title {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            padding: 0.75rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .pyramid-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pyramid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 450px;
+            gap: 0.35rem;
+        }
+
+        .pyramid-level {
+            padding: 0.625rem 0.875rem;
+            margin-bottom: 0;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            min-height: 38px;
+            box-sizing: border-box;
+            overflow: hidden;
+            gap: 0.75rem;
+        }
+
+        .pyramid-level:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .pyramid-level:nth-child(1) { 
+            width: 55%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(2) { 
+            width: 65%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(3) { 
+            width: 75%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(4) { 
+            width: 82%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(5) { 
+            width: 88%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(6) { 
+            width: 94%; 
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .pyramid-level:nth-child(7) { 
+            width: 100%; 
+        }
+
+        .pyramid-level.fatality {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        }
+
+        .pyramid-level.lti {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+        }
+
+        .pyramid-level.rwdc-mtc {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+        }
+
+        .pyramid-level.ed-ml-ps {
+            background: linear-gradient(135deg, #84cc16 0%, #65a30d 100%);
+        }
+
+        .pyramid-level.fac {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .pyramid-level.inc-nmi {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+        }
+
+        .pyramid-level.bsoc {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        }
+
+        .pyramid-value {
+            font-weight: 800;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            min-width: 45px;
+            max-width: 80px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            flex-shrink: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pyramid-level span:first-child {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .hsse-stats-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hsse-stats-box.large {
+            padding: 1.5rem;
+        }
+
+        .hsse-stats-label {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .hsse-stats-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #60a5fa;
+        }
+
+        .hsse-stats-value.large {
+            font-size: 2rem;
+        }
+
+        .hsse-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hsse-summary-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hsse-summary-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #60a5fa;
+        }
+
+        .hsse-summary-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hsse-summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.65rem;
+        }
+
+        .hsse-summary-list li {
+            margin-bottom: 0.25rem;
+            padding-left: 0.5rem;
+        }
+
+        .hsse-summary-percentage {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #84cc16;
+            margin-top: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .left-sidebar {
@@ -565,7 +850,14 @@
             <img src="{{ asset('images/gdap.jpg') }}" alt="GDAP Logo" class="header-logo">
             <h1>GDAP - One Page HSE Monthly Executive Report</h1>
         </div>
-        <div class="month">Month: {{ $hseData['month'] ?? 'Oct-25' }}</div>
+        <div class="month">
+            <span>Month:</span>
+            <input type="month" 
+                   id="monthSelector" 
+                   class="month-selector" 
+                   value="{{ $hseData['month_year'] ?? date('Y-m') }}" 
+                   onchange="changeMonth(this.value)">
+        </div>
     </div>
 
     <!-- Add New Report Button -->
@@ -1641,6 +1933,101 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- GDAP HSSE Performance Dashboard -->
+                <div class="section" style="margin-top: 2rem;">
+                    <div class="section-header">HSSE Performance</div>
+                    <div class="section-content">
+                        <div class="hsse-dashboard">
+                            <!-- Header -->
+                            <div class="hsse-header">
+                                <div class="hsse-title">GDAP HSSE PERFORMANCE</div>
+                            </div>
+
+                            <!-- Pyramid and Stats Container -->
+                            <div class="pyramid-container">
+                                <!-- Pyramid Diagram -->
+                                <div class="pyramid">
+                                    <div class="pyramid-level fatality">
+                                        <span>Fatality</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['fatality'] ?? '0' }}</span>
+                                    </div>
+                                    <div class="pyramid-level lti">
+                                        <span>LTI (Lost Time Injury)</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['lti'] ?? '0' }}</span>
+                                    </div>
+                                    <div class="pyramid-level rwdc-mtc">
+                                        <span>RWDC/MTC (Restricted Work Day Case / Medical Treatment Case)</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['rwdc'] ?? '0' }}/{{ $hseData['hsse_performance']['mtc'] ?? '0' }}</span>
+                                    </div>
+                                    <div class="pyramid-level ed-ml-ps">
+                                        <span>ED/ML/PS (Environmental Damage / Material Loss / Production Shortfall)</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['ed'] ?? '0' }}/{{ $hseData['hsse_performance']['ml'] ?? '1' }}/{{ $hseData['hsse_performance']['ps'] ?? '0' }}</span>
+                                    </div>
+                                    <div class="pyramid-level fac">
+                                        <span>FAC (First Aid Case)</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['fac'] ?? '3' }}</span>
+                                    </div>
+                                    <div class="pyramid-level inc-nmi">
+                                        <span>INC/NMI (Incident / Near Miss Incident)</span>
+                                        <span class="pyramid-value">{{ $hseData['hsse_performance']['inc'] ?? '0' }}/{{ $hseData['hsse_performance']['nmi'] ?? '0' }}</span>
+                                    </div>
+                                    <div class="pyramid-level bsoc">
+                                        <span>BSOC Report</span>
+                                        <span class="pyramid-value">{{ number_format($hseData['hsse_performance']['bsoc'] ?? 25721, 0, ',', '.') }}</span>
+                                    </div>
+                                </div>
+
+                                <!-- Right Side Stats -->
+                                <div style="display: flex; flex-direction: column; gap: 1.5rem; min-width: 180px; flex-shrink: 0;">
+                                    <!-- Days Without LTI -->
+                                    <div class="hsse-stats-box large" style="background: rgba(255, 255, 255, 0.12); border: 2px solid rgba(96, 165, 250, 0.3);">
+                                        <div class="hsse-stats-value large" style="color: #60a5fa; font-size: 2.5rem;">{{ $hseData['hsse_performance']['days_without_lti'] ?? '209' }}</div>
+                                        <div class="hsse-stats-label" style="font-size: 0.75rem; margin-top: 0.5rem;">Days Without LTI</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Total Man-hours and YTD -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-bottom: 2rem; position: relative; z-index: 1;">
+                                <div class="hsse-stats-box" style="flex: 1; background: rgba(255, 255, 255, 0.12); border: 2px solid rgba(96, 165, 250, 0.2);">
+                                    <div class="hsse-stats-label" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Total Man-hours</div>
+                                    <div class="hsse-stats-value" style="font-size: 1.75rem; color: #60a5fa;">{{ number_format($hseData['hsse_performance']['total_manhours'] ?? 274344, 0, ',', '.') }} Mmh</div>
+                                </div>
+                                <div class="hsse-stats-box large" style="background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.3); flex: 0 0 auto; min-width: 180px;">
+                                    <div class="hsse-stats-value large" style="font-size: 2rem; color: #60a5fa;">2025</div>
+                                    <div class="hsse-stats-label" style="font-size: 0.75rem; margin-top: 0.5rem;">(YTD)</div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Boxes -->
+                            <div class="hsse-summary-grid">
+                                <!-- Stop Job -->
+                                <div class="hsse-summary-box">
+                                    <div class="hsse-summary-value">{{ number_format($hseData['hsse_performance']['stop_job'] ?? 1305, 0, ',', '.') }} Stop Job in 2025</div>
+                                </div>
+
+                                <!-- HOC -->
+                                <div class="hsse-summary-box">
+                                    <div class="hsse-summary-value">{{ number_format($hseData['hsse_performance']['hoc'] ?? 25721, 0, ',', '.') }} HOC in 2025</div>
+                                    <div style="font-size: 0.65rem; opacity: 0.8; margin-top: 0.25rem;">(Rig Personnel)</div>
+                                </div>
+
+                                <!-- UA/UC -->
+                                <div class="hsse-summary-box">
+                                    <div class="hsse-summary-title">UA/UC - Unsafe Act/Unsafe Condition</div>
+                                    <div style="font-size: 0.7rem; font-weight: 600; margin-bottom: 0.5rem;">Top 3 CLSR:</div>
+                                    <ul class="hsse-summary-list">
+                                        <li>➤ {{ $hseData['hsse_performance']['top_clsr_1'] ?? 'Line of Fire' }}</li>
+                                        <li>➤ {{ $hseData['hsse_performance']['top_clsr_2'] ?? 'Tools & Equipment' }}</li>
+                                        <li>➤ {{ $hseData['hsse_performance']['top_clsr_3'] ?? 'Water-Based Work Activities' }}</li>
+                                    </ul>
+                                    <div class="hsse-summary-percentage">% Closure UA/UC: >{{ $hseData['hsse_performance']['closure_percentage'] ?? '85' }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Column 4 - Meeting & Workshop and Photographs -->
@@ -1905,6 +2292,21 @@
                     }
                 }
             });
+        }
+
+        // Function to handle month change
+        function changeMonth(monthYear) {
+            // Convert YYYY-MM to format like Oct-25
+            const date = new Date(monthYear + '-01');
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const month = monthNames[date.getMonth()];
+            const year = date.getFullYear().toString().slice(-2);
+            const formattedMonth = `${month}-${year}`;
+            
+            // Reload page with month parameter
+            const url = new URL(window.location.href);
+            url.searchParams.set('month', monthYear);
+            window.location.href = url.toString();
         }
     </script>
 </body>
